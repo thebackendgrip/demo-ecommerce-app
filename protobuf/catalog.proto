@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package ecommerce;
+
+option go_package = "internal/grpc/v1";
+
+service CatalogService {
+    rpc UpdateInventory(UpdateInventoryRequest) returns (UpdateInventoryResponse);
+}
+
+message Item {
+    string name = 1;
+    int64 qty = 2;  
+}
+
+enum Op {
+    Add = 0;
+    Remove = 1;
+}
+
+message UpdateInventoryRequest {
+    repeated Item items = 1;
+    Op op = 2;
+}
+
+message UpdateInventoryResponse {}

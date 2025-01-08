@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package ecommerce;
+
+option go_package = "internal/grpc/v1";
+
+service UserService {
+    rpc CreateUser(CreateUserRequest) returns (User);
+}
+
+message CreateUserRequest {
+    string email = 1;
+}
+
+message User {
+    string id = 1;
+    string email = 2;
+}

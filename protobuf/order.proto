@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package ecommerce;
+
+import "catalog.proto";
+
+option go_package = "internal/grpc/v1";
+
+service OrderService {
+    rpc CreateOrder(CreateOrderRequest) returns (Order);
+}
+
+message CreateOrderRequest {
+    string user_id = 1;
+    repeated Item items = 2;
+}
+
+message Order {
+    string id = 1;
+}
